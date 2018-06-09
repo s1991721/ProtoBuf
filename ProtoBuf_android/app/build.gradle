@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'com.google.protobuf'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.ljf.protobuf_android"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+            proto {
+                srcDir 'src/main/proto'
+            }
+        }
+    }
+}
+
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.5.1'
+    }
+
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.protobuf:protobuf-java:3.5.1'
+}
