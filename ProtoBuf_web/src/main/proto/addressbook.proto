@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package tutorial; //如果没有java_package则使用此package，最好不要为空不同语言都会使用，java_package只java使用
+
+option java_package = "com.example.tutorial"; //生成java文件的包
+option java_outer_classname = "AddressBookProtos"; //生成java文件的名字
+
+message Person {
+    required string name = 1; //必填字段
+    required int32 id = 2;
+    optional string email = 3; //可选字段
+
+    enum PhoneType { //枚举
+                     MOBILE = 0;
+                     HOME = 1;
+                     WORK = 2;
+    }
+
+    message PhoneNumber {
+        required string number = 1;
+        optional PhoneType type = 2 [default = HOME];
+    }
+
+    repeated PhoneNumber phones = 4; //java中的list
+}
+
+message AddressBook {
+    repeated Person people = 1;
+}
