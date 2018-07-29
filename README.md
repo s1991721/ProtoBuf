@@ -1,8 +1,8 @@
-#简介
+# 简介
 
 ProtoBuf由Google出品的序列化协议，由其二进制格式，所以在体积和传输方面性能优越，但也因此可读性差。
 
-> 官方地址：https://developers.google.cn/protocol-buffers/docs/proto3#simple
+> 官方地址：https://developers.google.cn/protocol-buffers
 
 此项目通过Java、JavaWeb、Android，从后端到前端，从项目搭建开始等一系列连贯的过程来展示ProtoBuf的使用。
 
